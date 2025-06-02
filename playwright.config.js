@@ -6,14 +6,14 @@ const { defineConfig, devices } = require('@playwright/test');
  */
 module.exports = defineConfig({
   testDir: './tests',
-  timeout: 15000,
+  timeout: 10000,
   expect: {
     timeout: 5000
   },
   // reporter: 'html',
   use: {
-    headless: true,
-    browserName: 'webkit'
+    headless: false,
+    browserName: 'firefox'
   }
 
 });

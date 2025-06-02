@@ -37,9 +37,9 @@ test('Browser Context', async ({browser}) => {
 
 })
 
-test.only('Assignment', async ({page}) => {
+test('Register', async ({page}) => {
     const registerButton = page.locator('.btn1');
-    const firtName = page.locator('#firstName');
+    const firstName = page.locator('#firstName');
     const lastName = page.locator('#lastName');
     const email = page.locator('#userEmail');
     const phoneNumber = page.locator('#userMobile');
@@ -48,26 +48,33 @@ test.only('Assignment', async ({page}) => {
     const password = page.locator('#userPassword');
     const confirmPassword = page.locator('#confirmPassword');
     const ageCheckbox = page.locator("input[type='checkbox']");
-    const registerSubmit = page.locator('#login');
-    const headerText = page.locator("div[class='left mt-1'] h3");
 
     await page.goto('https://rahulshettyacademy.com/client');
     await registerButton.click();
-    await firtName.fill('Kreatives');
+    await firstName.fill('Kreatives');
     await lastName.fill('Learning');
     await email.fill('319s8Fw@examplwee.com');
     await phoneNumber.fill('1234567890');
     await occupation.selectOption('Doctor');
     await gender.click();
-    await password.fill('learning');
-    await confirmPassword.fill('learning');
+    await password.fill('1234Aae@&');
+    await confirmPassword.fill('1234Aae@&');
     await ageCheckbox.click();
     await registerButton.click();
 
-    await email.fill('319s8Fw@examplwee.com');
-    await password.fill('learning');
-    await registerSubmit.click();
+})
 
-    await expect(headerText.textContent()).toContainText('Automation')
+test.only('Login', async ({page}) => {
+    const email = page.locator('#userEmail');
+    const password = page.locator('#userPassword');
+    const loginButton = page.locator('#login');
+    const cardBody = page.locator('.card-body');
+
+    await page.goto('https://rahulshettyacademy.com/client');
+    await email.fill('319s8Fw@examplwee.com');
+    await password.fill('1234Aae@&');
+    await loginButton.click();
+
+    await cardBody.first().locator('fa fa-shopping-cart').click();
 
 })
